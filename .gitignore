@@ -29,5 +29,5 @@ source/css/*.css
 Thumbs.db
 # pp/
 build/
-.github
+# .github
 
