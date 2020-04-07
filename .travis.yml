@@ -1,20 +1,27 @@
 language: node_js
 
 node_js:
-  - "8.12"
+  - "stable"
 
 # notifications:
 #   email: false
 
-before_deploy:
+# before_deploy:
+#   - npm run build
+#   - echo -e "node_modules\npackage-lock.json" > .gitignore
+
+script:
   - npm run build
-  - echo -e "node_modules\npackage-lock.json" > .gitignore
+
+after_success:
+- echo 'node_modules' > .gitignore
+- echo $CNAME > CNAME
 
 deploy:
   provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  local-dir: build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: build
   on:
     branch: master
