@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
+  height: 100%;
 }
 
 /* Указываем box sizing */
@@ -79,15 +80,18 @@ video {
 body {
   min-width: 320px;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  // min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: $font-first;
+  background-color: green;
 }
 
 .wrapper {
   max-width: $wrapper-width;
   width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
 }

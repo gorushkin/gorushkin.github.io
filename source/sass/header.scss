@@ -1,0 +1,27 @@
+.header {
+  background: $color1;
+  color: $color2;
+  position: fixed;
+  width: 100%;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__nav-list {
+  display: flex;
+
+  a {
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    display: block;
+    transition: all 0.3s;
+
+    &:hover {
+      background: $color2;
+      color: $color1;
+    }
+  }
+}
