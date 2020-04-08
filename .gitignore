@@ -14,7 +14,7 @@
 
 
 # End of https://www.gitignore.io/api/visualstudiocode
-css/*.*
+# css/*.*
 node_modules
 .DS_Store
 .idea
