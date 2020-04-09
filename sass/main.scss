@@ -1,15 +1,27 @@
 .main {
   background: $color2;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  // margin-bottom: 342px;
 }
 
 .about {
   min-height: calc(100vh - 66px);
 }
 
-.wrapper--fullscreen {
-  min-height: 100vh;
-  padding-top: 10rem;
+.wrapper {
+  &--fullscreen {
+    min-height: 100vh;
+    padding: 4rem 0;
+  }
+
+  &--padding {
+    padding-top: 10rem;
+  }
 }
+
+
 
 .about__columns {
   display: flex;
@@ -68,8 +80,7 @@
 
 .projects__list {
   display: flex;
-  // justify-content: space-between;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -84,7 +95,6 @@
   width: 100%;
   overflow: hidden;
   height: 350px;
-  position: relative;
   border-radius: 5px;
   box-shadow: 0 5px 15px 2px rgba(0,0,0,0.5);
   transition: all 0.3s;
@@ -113,3 +123,5 @@
 .card:hover .card__title {
   // display: block;
 }
+
+
