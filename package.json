@@ -45,6 +45,7 @@
     "gulp-webp": "^4.0.1",
     "gulp-zip": "^5.0.1",
     "imagemin-jpeg-recompress": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
     "normalize.css": "^8.0.1",
     "pixel-glass": "^1.0.13",
     "stylelint": "^11.1.1",

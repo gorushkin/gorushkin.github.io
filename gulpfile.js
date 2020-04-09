@@ -46,6 +46,7 @@ const pathNpm = require('path');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const imgCompress = require('imagemin-jpeg-recompress');
+const imageminMozjpeg = require('imagemin-mozjpeg');
 
 const name = pathNpm.basename(__dirname);
 
@@ -85,12 +86,7 @@ const clean = () => del('build');
 
 const images = () => gulp.src(path.src.imgsrc)
   .pipe(imagemin([
-    imgCompress({
-      loops: 4,
-      min: 70,
-      max: 80,
-      quality: 'high',
-    }),
+    imageminMozjpeg({quality: 75, progressive: true}),
     imagemin.optipng({
       optimizationLevel: 3,
     }),
