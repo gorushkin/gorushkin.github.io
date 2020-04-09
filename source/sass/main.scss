@@ -68,12 +68,15 @@
 
 .projects__list {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .proget__list-item {
   max-width: 350px;
   height: 350px;
+  margin-bottom: 2rem;
 }
 
 .card {
@@ -84,9 +87,11 @@
   position: relative;
   border-radius: 5px;
   box-shadow: 0 5px 15px 2px rgba(0,0,0,0.5);
+  transition: all 0.3s;
 
   &:hover {
-    box-shadow: 0 15px 45px 2px rgba(0,0,0,0.8);
+    box-shadow: 0 5px 25px 2px rgba(0,0,0,0.8);
+    transform: scale(1.01);
   }
 }
 
@@ -94,9 +99,17 @@
   display: none;
   position: absolute;
   top: 0;
+  bottom: 0;
   text-align: center;
   width: 100%;
   padding: 1rem 0;
   font-size: 2rem;
-  color: $color1;
+  color: $color2;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+
+}
+
+.card:hover .card__title {
+  // display: block;
 }
