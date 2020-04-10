@@ -64,15 +64,16 @@
 
 .project__img-wrapper {
   width: 50%;
-  height: 800px;
   overflow: hidden;
-  border-radius: 5px;
 }
 
 .project__img-link {
   display: inline-block;
   position: relative;
-  height: 100%;
+  max-height: 800px;
+  overflow: hidden;
+  border-radius: 5px;
+
 }
 
 .project__img-txt {
