@@ -15,55 +15,61 @@
     <div class="wrapper">
       <nav class="header__nav">
         <ul class="header__nav-list">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contacts</a></li>
-          <li><a href="#">About</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contacts">Contacts</a></li>
+          <!-- <li><a href="#">About</a></li> -->
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="main">
-    <section class="about">
-      <h1 class="visually-hidden">Артем Горюшкин</h1>
-      <div class="wrapper wrapper--fullscreen wrapper--padding">
-        <div class="about__columns">
-          <div class="columns__column column column--left">
-            <h2 class="column__title main__title">
-              Артем Горюшкин
-            </h2>
-          </div>
-          <div class="columns__column column column--right">
-            <h3 class="column__subtitle">
-              Немного обо мне
-            </h3>
-            <p class="column__text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa natus nulla vitae iure laudantium, doloribus
-              quia minus sequi corrupti consequuntur cupiditate reprehenderit obcaecati dignissimos eligendi dolore quam
-              nisi aliquid similique.
-            </p>
-            <h3 class="column__subtitle">
-              Что я знаю и умею
-            </h3>
-            <ul class="column__list">
-              <li>HTML5</li>
-              <li>CSS3</li>
-              <li>JavaScript</li>
-              <li>Node.JS</li>
-              <li>GULP</li>
-              <li>SCSS</li>
-              <li>Git</li>
-              <li>Photoshop</li>
-              <li>Avocode</li>
-              <li>Figma</li>
-            </ul>
-          </div>
+    <section id="home" class="about">
+      <div class="wrapper wrapper--fullscreen wrapper--about">
+        <h1 class="about__title main__title">
+          Артем Горюшкин
+          <span>фронтенд разработчик</span>
+        </h1>
+        <div class="about__info">
+          <h3 class="about__subtitle">
+            Немного обо мне
+          </h3>
+          <p class="about__text">
+            Всегда хотелось в IT. Пару лет узнал про различные онлайн-курсы. Сначала изучал экономику на <a
+              href="https://www.coursera.org/">Coursera</a>, потом там же изучал программировании на Python'е. После
+            чего узнал о <a href="https://htmlacademy.ru/">HTML Academy</a> и ее курсах по верстке. И тут все
+            завертелось. К настоящему времени закочил три интенсива на <a href="https://htmlacademy.ru/">HTML
+              Academy</a> - HTML и CSS, уровень 1, HTML и CSS, уровень 2 и JavaScript, уровень 1.
+          </p>
+          <p class="about__text">
+            В настоящее время тружусь верстальщиком и заканчиваю обучение на <a
+              href="https://ru.hexlet.io/">Хекслете</a>, где прохожу курс <a
+              href="https://ru.hexlet.io/professions/frontend">Фронтенд JavaScript</a>.
+          </p>
         </div>
+        <div class="about__skills">
+          <h3 class="about__subtitle">
+            Технологии, которыми я владею
+          </h3>
+          <ul class="about__list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Node.JS</li>
+            <li>GULP</li>
+            <li>SCSS</li>
+            <li>Git</li>
+            <li>Photoshop</li>
+            <li>Avocode</li>
+            <li>Figma</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
-    <section class="projects">
+    <section id="projects" class="projects">
       <div class="wrapper wrapper--fullscreen">
         <h2 class="projects__title main__title">
           Примеры работ
@@ -108,23 +114,17 @@
         </ul>
       </div>
     </section>
-
-    <section class="contacts">
-
-    </section>
-
-
-
   </main>
-  <footer class="footer">
+
+  <footer id="contacts" class="footer">
     <div class="wrapper">
       <h2 class="footer__title main__title">
-        Немного обо мне
+        Как со мной связаться
       </h2>
       <ul class="footer__social-list">
-        <li><a href="https://ru.hexlet.io/account/profile/edit">Мой профиль на Хекслете</a></li>
-        <li><a href="https://github.com/gorushkin">Мой профиль на Github</a></li>
-        <li><a href="mailto:gorushkin.artyom@gmail.com">gorushkin.artyom@gmail.com</a></li>
+        <li><a href="https://ru.hexlet.io/account/profile/edit">Хекслет</a></li>
+        <li><a href="https://github.com/gorushkin">GitHub</a></li>
+        <li><a href="mailto:gorushkin.artyom@gmail.com">EmailMe</a></li>
       </ul>
     </div>
   </footer>
