@@ -45,7 +45,7 @@ const concat = require('gulp-concat');
 const pathNpm = require('path');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
-const imgCompress = require('imagemin-jpeg-recompress');
+// const imgCompress = require('imagemin-jpeg-recompress');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
 const name = pathNpm.basename(__dirname);
