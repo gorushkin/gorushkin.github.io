@@ -14,11 +14,13 @@
 }
 
 .footer__social-list {
+  display: flex;
+
   a {
-    font-size: 1rem;
-    line-height: 2rem;
+    font-size: 2rem;
     position: relative;
     display: inline-block;
+    margin-right: 2rem;
 
     &::after {
       content: "";
