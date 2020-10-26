@@ -5,6 +5,7 @@ import babel from 'gulp-babel';
 import server from 'browser-sync';
 import concat from 'gulp-concat';
 import sourcemaps from 'gulp-sourcemaps';
+import include from 'gulp-include';
 import css from './gulp/css.js';
 import path from './gulp/path.js';
 
@@ -24,7 +25,7 @@ const js = () => {
   gulp
     .src(path.src.jsVendors)
     .pipe(babel())
-    .pipe(concat('vendors.js'))
+    .pipe(concat('vendor.js'))
     .pipe(gulp.dest(path.build.js));
 
   return gulp
@@ -36,9 +37,7 @@ const js = () => {
     .pipe(gulp.dest(path.build.js));
 };
 
-const html = () => gulp
-  .src(path.src.html)
-  .pipe(gulp.dest(buildFolder));
+const html = () => gulp.src(path.src.html).pipe(include()).pipe(gulp.dest(buildFolder));
 
 const build = gulp.series(clean, gulp.parallel(js, css, copy, html));
 
