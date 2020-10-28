@@ -17,53 +17,36 @@
         <ul class="header__nav-list">
           <li><a href="#home">Home</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About Me</a></li>
           <li><a href="#contacts">Contacts</a></li>
-          <!-- <li><a href="#">About</a></li> -->
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="main">
-    <section id="home" class="about">
-      <div class="wrapper wrapper--fullscreen wrapper--about">
-        <h1 class="about__title main__title">
+    <section id="home" class="info">
+      <div class="wrapper wrapper--fullscreen wrapper--info">
+        <h1 class="info__title main__title">
           Артем Горюшкин
           <span>фронтенд разработчик</span>
         </h1>
-        <div class="about__info">
-          <h3 class="about__subtitle">
-            Немного обо мне
+        <div class="info__skills">
+          <h3 class="info__subtitle">
+            Технологии, которые я знаю и использую
           </h3>
-          <p class="about__text">
-            Всегда хотелось в IT. Пару лет узнал про различные онлайн-курсы. Сначала изучал экономику на <a
-              href="https://www.coursera.org/">Coursera</a>, потом там же изучал программировании на Python'е. После
-            чего узнал о <a href="https://htmlacademy.ru/">HTML Academy</a> и ее курсах по верстке. И тут все
-            завертелось. К настоящему времени закочил три интенсива на <a href="https://htmlacademy.ru/">HTML
-              Academy</a> - HTML и CSS, уровень 1, HTML и CSS, уровень 2 и JavaScript, уровень 1.
-          </p>
-          <p class="about__text">
-            В настоящее время тружусь верстальщиком и заканчиваю обучение на <a
-              href="https://ru.hexlet.io/">Хекслете</a>, где прохожу курс <a
-              href="https://ru.hexlet.io/professions/frontend">Фронтенд JavaScript</a>.
-          </p>
-        </div>
-        <div class="about__skills">
-          <h3 class="about__subtitle">
-            Технологии, которыми я владею
-          </h3>
-          <ul class="about__list">
-            <li>HTML5</li>
-            <li>CSS3</li>
+          <ul class="info__list">
+            <li>HTML5, CSS3, SCSS</li>
             <li>БЭМ</li>
-            <li>JavaScript</li>
+            <li>JavaScript(ES6+)</li>
+            <li>React, React (hooks);</li>
+            <li>Redux, Redux Toolkit, Forms;</li>
+            <li>Express</li>
+            <li>TDD, JEST</li>
+            <li>Git, Github, Github Action;</li>
+            <li>Babel, Webpack, Gulp;</li>
             <li>Node.JS</li>
-            <li>GULP</li>
-            <li>SCSS</li>
-            <li>Git</li>
-            <li>Photoshop</li>
-            <li>Avocode</li>
-            <li>Figma</li>
+            <li>Figma, Photoshop, Avocode</li>
           </ul>
         </div>
       </div>
@@ -76,15 +59,21 @@
         </h2>
         <ul class="projects__list">
           <li class="proget__list-item">
-            <a class="progect__list-card card" href="project07.html">
-              <img data-src="img/item13.jpg" alt="Veles" class="card__img lazy">
+            <a class="progect__list-card card" href="project12.html">
+              <img data-src="img/item14.jpg" alt="Task Manager" class="card__img lazy">
+              <p class="card__title">Task Manager</p>
+            </a>
+          </li>
+          <li class="proget__list-item">
+            <a class="progect__list-card card" href="project11.html">
+              <img data-src="img/item13.jpg" alt="Чат" class="card__img lazy">
               <p class="card__title">Чат</p>
             </a>
           </li>
           <li class="proget__list-item">
-            <a class="progect__list-card card" href="project08.html">
-              <img data-src="img/item12.jpg" alt="Veles" class="card__img lazy">
-              <p class="card__title">Агорегатор новостей</p>
+            <a class="progect__list-card card" href="project10.html">
+              <img data-src="img/item12.jpg" alt="Агрегатор новостей" class="card__img lazy">
+              <p class="card__title">Агрегатор новостей</p>
             </a>
           </li>
           <li class="proget__list-item">
@@ -111,9 +100,6 @@
               <p class="card__title">Glaccy</p>
             </a>
           </li>
-
-
-
           <li class="proget__list-item">
             <a class="progect__list-card card" href="project01.html">
               <img data-src="img/item01.jpg" alt="Студия Нёрд's" class="card__img lazy">
@@ -121,6 +107,32 @@
             </a>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="wrapper">
+        <h2 class="about__title main__title">
+          Немного обо мне
+        </h2>
+        <p>
+          Пару лет назад как-то неожиданно узнал о такой технологии, как MOOCs (Massive Open Online Courses). Работал
+          бухгалтером, поэтому в свободное время изучал там экономику, смотрел лекции ВШЭ.
+        </p>
+        <p>
+          Потом из рассылки узнал, что там же можно и основы программирования на языке Python изучить. Попробовал -
+          понравилось).
+        </p>
+        <p>
+          Потом узнал про HTML Academy, где с огоромным интересоом закончил несколько интенсивов, закончил обучение по
+          профессии "Фронтенд-разработчик", откуда узнал о том, что можно создавать приложения на Java Script, создавать
+          интерактивные страницы, которые взаиможействуют с посетителем. Кто-то из сокурсников начал нахваливать Hexlet.
+        </p>
+        <p>
+          В настооящее время работаю верстальщиком. В обязанности входит кроссбраузерная и адаптивная верстка, создание интерактивных элементов с использование Java Script,
+          подключение различных слайеров и прочих библиотек.
+          Паралельно прохожу обучение по профессии Node.js-программист в Hexlet'е.
+        </p>
       </div>
     </section>
   </main>
