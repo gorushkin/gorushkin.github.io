@@ -1,12 +1,7 @@
 .footer {
   background: $color1;
   color: $color2;
-  padding: 5rem 0;
-  // position: fixed;
-  // position: sticky;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
+  padding: 2rem 0;
 }
 
 .footer__title {
@@ -19,7 +14,7 @@
   a {
     font-size: 2rem;
     position: relative;
-    display: inline-block;
+  display: inline-block;
     margin-right: 2rem;
 
     &::after {

@@ -476,7 +476,7 @@ body {
   padding-bottom: 4rem;
 }
 
-.wrapper--about {
+.wrapper--info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -487,36 +487,36 @@ body {
   line-height: 3rem;
 }
 
-.about__title {
+.info__title {
   margin-bottom: 2rem;
 }
 
-.about__title span {
+.info__title span {
   display: block;
   font-size: 1.5rem;
 }
 
-.about__subtitle {
+.info__subtitle {
   font-size: 1.5rem;
   font-weight: bolder;
   line-height: 3rem;
   margin-bottom: 0.75rem;
 }
 
-.about__text {
+.info__text {
   font-size: 1rem;
   margin-bottom: 0.75rem;
   max-width: 50%;
 }
 
-.about__text a {
+.info__text a {
   font-weight: bolder;
   transition: all 3s;
   position: relative;
   display: inline-block;
 }
 
-.about__text a::after {
+.info__text a::after {
   content: "";
   width: 0;
   height: 1px;
@@ -525,16 +525,16 @@ body {
   transition: 300ms;
 }
 
-.about__text a:hover::after {
+.info__text a:hover::after {
   width: 100%;
 }
 
-.about__list {
+.info__list {
   columns: 2;
   max-width: 50%;
 }
 
-.about__list li {
+.info__list li {
   font-size: 1.2rem;
   line-height: 2rem;
 }
@@ -597,6 +597,19 @@ body {
   transition: all 0.3s;
 }
 
+.about {
+  padding: 5rem 0;
+}
+
+.about h2 {
+  margin-bottom: 1.5rem;
+}
+
+.about p {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
 .project {
   background: #facf5a;
   min-height: 100vh;
@@ -652,6 +665,7 @@ body {
   padding: 10px 20px;
   line-height: 3rem;
   transition: all 0.3s;
+  margin-bottom: 15px;
 }
 
 .project__link:hover {
@@ -699,7 +713,7 @@ body {
 .footer {
   background: #0f4c81;
   color: #facf5a;
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
 
 .footer__title {
