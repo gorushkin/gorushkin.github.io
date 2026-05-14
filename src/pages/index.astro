@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ResumeDocument from "../components/ResumeDocument.astro";
+import { frontmatter as info } from "../data/info.md";
+import { resumeStyles } from "../data/resumeStyles";
+
+const selectedStyle = resumeStyles.find((style) => style.id === import.meta.env.RESUME_STYLE);
+
+const accentClasses = {
+  emerald: "border-emerald-600 bg-emerald-50 text-emerald-800",
+  sky: "border-sky-600 bg-sky-50 text-sky-800",
+  rose: "border-rose-600 bg-rose-50 text-rose-800",
+  blue: "border-blue-600 bg-blue-50 text-blue-800",
+  indigo: "border-indigo-700 bg-indigo-50 text-indigo-800",
+};
+---
+
+<Layout
+  title={selectedStyle ? `${info.name} - ${selectedStyle.name}` : `${info.name} - варианты резюме`}
+  description={info.description}
+>
+  {selectedStyle ? (
+    <div class="print:contents">
+      <div class="fixed right-4 top-4 z-10 print:hidden">
+        <button
+          class="inline-flex items-center bg-zinc-950 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800"
+          type="button"
+          data-download-resume
+        >
+          Скачать PDF
+        </button>
+      </div>
+
+      <ResumeDocument style={selectedStyle} />
+    </div>
+  ) : (
+    <main class="mx-auto min-h-screen w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[0.18em] text-zinc-500">
+          {info.title}
+        </p>
+        <h1 class="mt-3 text-4xl font-black leading-tight text-zinc-950 sm:text-6xl">
+          {info.name}
+        </h1>
+        <p class="mt-5 text-lg leading-8 text-zinc-700">
+          Выберите вариант оформления резюме. Все шаблоны используют одни и те же данные из
+          <span class="font-semibold text-zinc-950"> info.md</span>.
+        </p>
+      </header>
+
+      <section class="mt-10 grid gap-5 md:grid-cols-3">
+        {resumeStyles.map((style, index) => (
+          <a
+            class="group flex min-h-72 flex-col justify-between border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-zinc-400 hover:shadow-md"
+            href={style.href}
+          >
+            <div>
+              <div class={`inline-flex border px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] ${accentClasses[style.accent]}`}>
+                {index === 0 ? "Текущий" : `Стиль ${index + 1}`}
+              </div>
+              <h2 class="mt-5 text-2xl font-bold text-zinc-950">{style.name}</h2>
+              <p class="mt-3 text-sm leading-6 text-zinc-600">{style.description}</p>
+            </div>
+
+            <div class="mt-8 flex items-center justify-between border-t border-zinc-200 pt-5">
+              <span class="text-sm font-semibold text-zinc-950">Открыть резюме</span>
+              <span class="text-xl leading-none text-zinc-400 transition group-hover:translate-x-1 group-hover:text-zinc-950">→</span>
+            </div>
+          </a>
+        ))}
+      </section>
+
+      <article class="mt-10 border border-zinc-200 bg-white p-6">
+        <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">Данные</h2>
+        <div class="mt-4 grid gap-4 text-sm leading-6 text-zinc-700 sm:grid-cols-3">
+          <p><span class="font-semibold text-zinc-950">Локация:</span> {info.location}, {info.workFormat}</p>
+          <p><span class="font-semibold text-zinc-950">Email:</span> {info.contacts.email}</p>
+          <p><span class="font-semibold text-zinc-950">Telegram:</span> {info.contacts.telegram}</p>
+        </div>
+      </article>
+    </main>
+  )}
+
+  <script>
+    document.querySelector("[data-download-resume]")?.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
+</Layout>
