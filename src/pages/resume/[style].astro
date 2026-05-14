@@ -23,7 +23,7 @@ export function getStaticPaths() {
 const { style } = Astro.props;
 ---
 
-<Layout title={`${info.name} - ${style.name}`} description={info.description}>
+<Layout title={info.name} description={info.description}>
   <div class="print:contents">
     <div class="fixed right-4 top-4 z-10 print:hidden">
       <button
@@ -39,8 +39,10 @@ const { style } = Astro.props;
   </div>
 
   <script>
-    document.querySelector("[data-download-resume]")?.addEventListener("click", () => {
-      window.print();
-    });
+    document
+      .querySelector("[data-download-resume]")
+      ?.addEventListener("click", () => {
+        window.print();
+      });
   </script>
 </Layout>

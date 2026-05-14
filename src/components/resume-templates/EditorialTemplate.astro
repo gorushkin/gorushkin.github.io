@@ -1,0 +1,65 @@
+---
+import { info, skillGroups } from "../resumeData";
+---
+
+<main class="min-h-screen bg-stone-50 px-4 py-6 text-zinc-950 sm:px-8 lg:px-12 print:bg-white print:px-0 print:py-0">
+  <article class="mx-auto max-w-6xl">
+    <header class="grid min-h-[48vh] content-end gap-8 border-b border-zinc-300 pb-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-rose-700">{info.title}</p>
+        <h1 class="mt-5 max-w-4xl text-6xl font-black leading-none text-zinc-950 sm:text-7xl">
+          {info.name}
+        </h1>
+      </div>
+      <div class="space-y-5">
+        <p class="text-xl leading-8 text-zinc-700">{info.description}</p>
+        <address class="grid gap-1 not-italic text-sm font-medium text-zinc-700">
+          <span>{info.location} • {info.workFormat}</span>
+          <a class="text-rose-800 underline-offset-4 hover:underline" href={`mailto:${info.contacts.email}`}>{info.contacts.email}</a>
+          <a class="text-rose-800 underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>Telegram: {info.contacts.telegram}</a>
+          <a class="text-rose-800 underline-offset-4 hover:underline" href={info.contacts.github}>GitHub: {info.contacts.github.replace("https://", "")}</a>
+        </address>
+      </div>
+    </header>
+
+    <section class="grid gap-8 border-b border-zinc-300 py-10 lg:grid-cols-[220px_1fr]">
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Обо мне</h2>
+      <div class="columns-1 gap-8 space-y-4 text-base leading-8 text-zinc-700 md:columns-2">
+        {info.about.map((paragraph) => (
+          <p class="break-inside-avoid">{paragraph}</p>
+        ))}
+      </div>
+    </section>
+
+    <section class="grid gap-8 border-b border-zinc-300 py-10 lg:grid-cols-[220px_1fr]">
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Технологии</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {skillGroups.map(([title, skills]) => (
+          <div class="border-t border-zinc-300 pt-3">
+            <h3 class="text-sm font-bold text-zinc-950">{title}</h3>
+            <p class="mt-2 text-sm leading-6 text-zinc-700">{skills.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="grid gap-8 py-10 lg:grid-cols-[220px_1fr]">
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Опыт работы</h2>
+      <div class="space-y-10">
+        {info.experience.map((job) => (
+          <section>
+            <p class="text-sm font-bold uppercase tracking-[0.12em] text-zinc-500">{job.period}</p>
+            <h3 class="mt-2 text-3xl font-black leading-tight text-zinc-950">{job.company}</h3>
+            <p class="mt-1 text-base font-bold text-rose-800">{job.position}</p>
+            <p class="mt-4 text-base font-medium leading-7 text-zinc-800">{job.summary}</p>
+            <ul class="mt-4 grid gap-3 text-[15px] leading-7 text-zinc-700">
+              {job.details.map((detail) => (
+                <li class="border-l-2 border-rose-700 pl-4">{detail}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </section>
+  </article>
+</main>

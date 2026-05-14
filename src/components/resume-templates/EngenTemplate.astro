@@ -1,0 +1,98 @@
+---
+import { info, skillGroups } from "../resumeData";
+---
+
+<main class="min-h-screen bg-zinc-100 px-4 py-4 font-sans text-black print:min-h-0 print:bg-white print:px-0 print:py-0 print:text-[10pt]">
+  <article class="mx-auto max-w-[55rem] bg-white px-3 py-4 shadow-sm print:max-w-none print:p-0 print:shadow-none">
+    <header class="flex flex-col gap-3 p-2 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between print:gap-1 print:p-0">
+      <h1 class="text-3xl font-black leading-tight print:text-2xl">
+        {info.name}
+        <span class="block text-lg font-light text-zinc-700 print:text-base">
+          {info.title}
+        </span>
+      </h1>
+
+      <address class="text-sm not-italic leading-relaxed text-zinc-700 sm:text-right print:text-[9pt] print:leading-snug">
+        <span class="block">{info.location} • {info.workFormat}</span>
+        <a class="block whitespace-nowrap underline-offset-4 hover:underline" href={`mailto:${info.contacts.email}`}>
+          {info.contacts.email}
+        </a>
+        <a class="block whitespace-nowrap underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>
+          {info.contacts.telegram}
+        </a>
+        <a class="block whitespace-nowrap underline-offset-4 hover:underline" href={info.contacts.github}>
+          {info.contacts.github.replace("https://", "")}
+        </a>
+      </address>
+    </header>
+
+    <div class="grid gap-y-3 [grid-template-columns:max-content_1fr] print:gap-y-2">
+      <section class="col-span-2 grid grid-cols-1 gap-x-4 gap-y-3 border-t-2 border-indigo-900 px-2 pt-3 leading-relaxed sm:[grid-template-columns:subgrid] print:px-0 print:pt-2 print:leading-snug">
+        <h2 class="text-center text-lg font-light uppercase leading-none text-zinc-800 sm:text-left print:text-[11pt]">
+          Summary
+        </h2>
+        <div class="space-y-3 text-sm leading-6 text-zinc-800 sm:col-start-2 print:space-y-2 print:text-[10pt] print:leading-snug">
+          {info.about.slice(0, 3).map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      <section class="col-span-2 grid grid-cols-1 gap-x-4 gap-y-3 border-t-2 border-indigo-900 px-2 pt-3 leading-relaxed sm:[grid-template-columns:subgrid] print:px-0 print:pt-2 print:leading-snug">
+        <h2 class="text-center text-lg font-light uppercase leading-none text-zinc-800 sm:text-left print:text-[11pt]">
+          Skills
+        </h2>
+        <div class="grid gap-2 text-sm leading-6 text-zinc-800 sm:col-start-2 print:gap-1 print:text-[10pt] print:leading-snug">
+          {skillGroups.map(([title, skills]) => (
+            <p>
+              <span class="font-bold">{title}:</span> {skills.join(", ")}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <section class="col-span-2 grid grid-cols-1 gap-x-4 gap-y-3 border-t-2 border-indigo-900 px-2 pt-3 leading-relaxed sm:[grid-template-columns:subgrid] print:px-0 print:pt-2 print:leading-snug">
+        <h2 class="text-center text-lg font-light uppercase leading-none text-zinc-800 sm:text-left print:text-[11pt]">
+          Experience
+        </h2>
+        <div class="space-y-5 sm:col-start-2 print:space-y-3">
+          {info.experience.map((job) => (
+            <section class="break-inside-avoid">
+              <header class="grid gap-x-2 sm:grid-cols-[max-content_1fr]">
+                <h3 class="text-base font-black leading-snug print:text-[10pt]">
+                  {job.position}
+                </h3>
+                <span class="text-sm font-light leading-snug sm:col-start-1 print:text-[9pt]">
+                  {job.company}
+                </span>
+                <span class="text-sm font-light leading-snug text-zinc-700 sm:col-start-2 sm:row-start-1 sm:justify-self-end print:text-[9pt]">
+                  {job.period}
+                </span>
+              </header>
+
+              <p class="mt-2 text-sm font-semibold leading-6 text-zinc-800 print:mt-1 print:text-[10pt] print:leading-snug">
+                {job.summary}
+              </p>
+              <ul class="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-zinc-800 print:mt-1 print:space-y-0.5 print:pl-4 print:text-[10pt] print:leading-snug">
+                {job.details.map((detail) => (
+                  <li class="pl-1">{detail}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section class="col-span-2 grid grid-cols-1 gap-x-4 gap-y-3 border-t-2 border-indigo-900 px-2 pt-3 leading-relaxed sm:[grid-template-columns:subgrid] print:px-0 print:pt-2 print:leading-snug">
+        <h2 class="text-center text-lg font-light uppercase leading-none text-zinc-800 sm:text-left print:text-[11pt]">
+          Focus
+        </h2>
+        <ul class="list-disc space-y-1 pl-5 text-sm leading-6 text-zinc-800 sm:col-start-2 print:space-y-0.5 print:pl-4 print:text-[10pt] print:leading-snug">
+          {info.about.slice(3).map((paragraph) => (
+            <li class="pl-1">{paragraph}</li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </article>
+</main>
