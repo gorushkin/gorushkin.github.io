@@ -93,9 +93,7 @@ Workflow также можно запустить вручную из GitHub Act
 В настройках GitHub Pages нужно выбрать:
 
 ```txt
-Build and deployment: Deploy from a branch
-Branch: deploy
-Folder: / (root)
+Build and deployment: GitHub Actions
 ```
 
-Workflow кладет в `deploy` файл `.nojekyll`, чтобы GitHub Pages не пытался собирать Astro-файлы через Jekyll.
+Workflow также кладет собранный `dist/` в ветку `deploy` и добавляет файл `.nojekyll`, чтобы GitHub Pages не пытался собирать Astro-файлы через Jekyll.
