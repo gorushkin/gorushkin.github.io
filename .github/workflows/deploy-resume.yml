@@ -25,7 +25,7 @@ permissions:
 
 concurrency:
   group: deploy-resume
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   RESUME_STYLE: default
@@ -107,4 +107,4 @@ jobs:
     steps:
       - name: Deploy artifact to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
