@@ -83,9 +83,19 @@ engen
 При push в `master` GitHub Actions собирает один шаблон командой:
 
 ```sh
-pnpm build:resume -- engen
+pnpm build:resume -- default
 ```
 
-Результат из `dist/` публикуется в ветку `deply`. Шаблон по умолчанию задается в `.github/workflows/deploy-resume.yml` через `RESUME_STYLE`, ветка публикации — через `DEPLOY_BRANCH`.
+Результат из `dist/` публикуется в ветку `deploy`. Шаблон по умолчанию задается в `.github/workflows/deploy-resume.yml` через `RESUME_STYLE`, ветка публикации — через `DEPLOY_BRANCH`.
 
 Workflow также можно запустить вручную из GitHub Actions и выбрать другой шаблон.
+
+В настройках GitHub Pages нужно выбрать:
+
+```txt
+Build and deployment: Deploy from a branch
+Branch: deploy
+Folder: / (root)
+```
+
+Workflow кладет в `deploy` файл `.nojekyll`, чтобы GitHub Pages не пытался собирать Astro-файлы через Jekyll.

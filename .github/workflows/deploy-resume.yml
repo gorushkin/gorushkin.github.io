@@ -1,0 +1,87 @@
+name: Deploy resume
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      style:
+        description: Resume template id to build
+        required: true
+        default: default
+        type: choice
+        options:
+          - classic
+          - compact
+          - editorial
+          - default
+          - engen
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-resume
+  cancel-in-progress: true
+
+env:
+  RESUME_STYLE: default
+  DEPLOY_BRANCH: deploy
+
+jobs:
+  deploy:
+    name: Build and publish resume
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build selected resume template
+        run: pnpm build:resume -- "${{ github.event.inputs.style || env.RESUME_STYLE }}"
+
+      - name: Preserve custom domain
+        run: cp CNAME dist/CNAME
+
+      - name: Disable Jekyll for GitHub Pages
+        run: touch dist/.nojekyll
+
+      - name: Publish dist to deploy branch
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          publish_dir="$(mktemp -d)"
+          cp -R dist/. "$publish_dir/"
+
+          git fetch origin "$DEPLOY_BRANCH" || true
+          if git show-ref --verify --quiet "refs/remotes/origin/$DEPLOY_BRANCH"; then
+            git switch --force-create "$DEPLOY_BRANCH" "origin/$DEPLOY_BRANCH"
+          else
+            git switch --orphan "$DEPLOY_BRANCH"
+          fi
+
+          git rm -r --ignore-unmatch .
+          cp -R "$publish_dir"/. .
+
+          git add .
+          git commit -m "Deploy resume ${GITHUB_SHA}" || {
+            echo "No deployment changes to commit."
+            exit 0
+          }
+          git push origin "$DEPLOY_BRANCH"
