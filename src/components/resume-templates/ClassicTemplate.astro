@@ -1,5 +1,5 @@
 ---
-import { info, skillGroups } from "../resumeData";
+import { info, resumeSections } from "../resumeData";
 ---
 
 <main class="mx-auto min-h-screen w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8 print:max-w-none print:px-0 print:py-0">
@@ -37,10 +37,10 @@ import { info, skillGroups } from "../resumeData";
       <aside class="space-y-8">
         <section>
           <h2 class="border-b border-zinc-300 pb-2 text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">
-            Технологии
+            {resumeSections.technologies.title}
           </h2>
           <div class="mt-5 space-y-5">
-            {skillGroups.map(([title, skills]) => (
+            {resumeSections.technologies.groups.map(([title, skills]) => (
               <div>
                 <h3 class="text-sm font-semibold text-zinc-950">{title}</h3>
                 <div class="mt-2 flex flex-wrap gap-2">
@@ -59,10 +59,10 @@ import { info, skillGroups } from "../resumeData";
       <div class="space-y-10">
         <section>
           <h2 class="border-b border-zinc-300 pb-2 text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">
-            Обо мне
+            {resumeSections.about.title}
           </h2>
           <div class="mt-5 space-y-4 text-[15px] leading-7 text-zinc-700">
-            {info.about.map((paragraph) => (
+            {resumeSections.about.paragraphs.map((paragraph) => (
               <p>{paragraph}</p>
             ))}
           </div>
@@ -70,10 +70,10 @@ import { info, skillGroups } from "../resumeData";
 
         <section>
           <h2 class="border-b border-zinc-300 pb-2 text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">
-            Опыт работы
+            {resumeSections.experience.title}
           </h2>
           <div class="mt-6 space-y-9">
-            {info.experience.map((job) => (
+            {resumeSections.experience.jobs.map((job) => (
               <section class="grid gap-3 border-l-2 border-zinc-200 pl-5">
                 <div class="grid gap-1 sm:grid-cols-[1fr_auto] sm:items-start">
                   <div>

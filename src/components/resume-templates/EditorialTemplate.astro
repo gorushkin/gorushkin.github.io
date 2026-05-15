@@ -1,5 +1,5 @@
 ---
-import { info, skillGroups } from "../resumeData";
+import { info, resumeSections } from "../resumeData";
 ---
 
 <main class="min-h-screen bg-stone-50 px-4 py-6 text-zinc-950 sm:px-8 lg:px-12 print:bg-white print:px-0 print:py-0">
@@ -23,18 +23,18 @@ import { info, skillGroups } from "../resumeData";
     </header>
 
     <section class="grid gap-8 border-b border-zinc-300 py-10 lg:grid-cols-[220px_1fr]">
-      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Обо мне</h2>
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">{resumeSections.about.title}</h2>
       <div class="columns-1 gap-8 space-y-4 text-base leading-8 text-zinc-700 md:columns-2">
-        {info.about.map((paragraph) => (
+        {resumeSections.about.paragraphs.map((paragraph) => (
           <p class="break-inside-avoid">{paragraph}</p>
         ))}
       </div>
     </section>
 
     <section class="grid gap-8 border-b border-zinc-300 py-10 lg:grid-cols-[220px_1fr]">
-      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Технологии</h2>
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">{resumeSections.technologies.title}</h2>
       <div class="grid gap-4 sm:grid-cols-2">
-        {skillGroups.map(([title, skills]) => (
+        {resumeSections.technologies.groups.map(([title, skills]) => (
           <div class="border-t border-zinc-300 pt-3">
             <h3 class="text-sm font-bold text-zinc-950">{title}</h3>
             <p class="mt-2 text-sm leading-6 text-zinc-700">{skills.join(", ")}</p>
@@ -44,9 +44,9 @@ import { info, skillGroups } from "../resumeData";
     </section>
 
     <section class="grid gap-8 py-10 lg:grid-cols-[220px_1fr]">
-      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">Опыт работы</h2>
+      <h2 class="text-sm font-bold uppercase tracking-[0.18em] text-rose-700">{resumeSections.experience.title}</h2>
       <div class="space-y-10">
-        {info.experience.map((job) => (
+        {resumeSections.experience.jobs.map((job) => (
           <section>
             <p class="text-sm font-bold uppercase tracking-[0.12em] text-zinc-500">{job.period}</p>
             <h3 class="mt-2 text-3xl font-black leading-tight text-zinc-950">{job.company}</h3>
