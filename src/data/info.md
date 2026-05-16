@@ -1,8 +1,9 @@
 ---
 name: Горюшкин Артем
+titleName: Artyom Gorushkin
 title: Senior Frontend Engineer
 description: >-
-  Frontend-инженер с 7+ годами опыта с 7+ годами опыта. Работаю с TypeScript и React,
+  Frontend-инженер с 7+ годами опыта. Работаю с TypeScript и React,
   делаю сложные интерфейсы с данными: таблицы, формы, синхронизацию состояний
   и обновления в реальном времени.
 location: Воронеж
@@ -35,44 +36,52 @@ about:
     инструменты и инфраструктура, которые ускоряют работу всей команды.
 
 skills:
-  main:
+  core:
     - TypeScript
+    - JavaScript
     - React
-    - MobX
-  additional:
-    - Redux
     - Next.js
-    - WebSocket
+    - MobX
+    - Redux Toolkit
   architecture:
-    - Feature-Sliced Design (FSD)
-  testing:
-    - Jest
-    - Vitest
-    - React Testing Library
+    - Frontend Architecture
+    - State Management
+    - Feature-Sliced Design
+    - Design Systems
+    - Платформенные frontend-решения
+    - Real-time UI
   backend:
     - Node.js
     - Express
     - Fastify
+    - REST API
+    - BFF
+    - PostgreSQL
+    - Drizzle ORM
+    - Prisma
   ui:
     - Material UI
     - Ant Design
-    - Core UI
-  styles:
+    - Tailwind CSS
     - SCSS
     - CSS Modules
     - CSS-in-JS
-    - Tailwind CSS
+  testing:
+    - Jest
+    - Vitest
+    - React Testing Library
+  tooling:
+    - Vite
+    - Webpack
+    - ESLint
+    - Docker
+    - Git
+    - GitHub Actions
   integrations:
     - Google Maps API
-    - WebSocket
+    - JWT Authentication
     - Google Analytics
-  infrastructure:
-    - Docker
-    - CI/CD
-    - Linux
-  tools:
-    - Git
-    - Jira
+    - WebSocket
 
 experience:
   - company: КОРУС Консалтинг

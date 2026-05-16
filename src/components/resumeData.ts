@@ -3,23 +3,40 @@ import { frontmatter as info } from "../data/info.md";
 export { info };
 
 export const skillGroups = [
-  ["Основной стек", info.skills.main],
-  ["Дополнительно", info.skills.additional],
+  ["Основной стек", info.skills.core],
   ["Архитектура", info.skills.architecture],
-  ["Тестирование", info.skills.testing],
   ["Backend", info.skills.backend],
   ["Frontend", info.skills.ui],
-  ["Стилизация", info.skills.styles],
+  ["Тестирование", info.skills.testing],
+  ["Инструменты", info.skills.tooling],
   ["Интеграции", info.skills.integrations],
-  ["Инфраструктура", info.skills.infrastructure],
-  ["Инструменты", info.skills.tools],
 ];
 
 export const primarySkills = [
-  ...info.skills.main,
-  ...info.skills.additional,
-  ...info.skills.architecture,
-  ...info.skills.testing,
+  "TypeScript",
+  "React",
+  "Next.js",
+  "MobX",
+  "Redux Toolkit",
+  "Frontend Architecture",
+  "State Management",
+  "Feature-Sliced Design",
+  "Real-time UI",
+  "Node.js",
+  "BFF",
+  "Jest",
+  "Vitest",
+  "React Testing Library",
+];
+
+export const documentTitle = `${info.titleName} — ${info.title}`;
+
+export const compactSkillGroups = [
+  ["Frontend", [...info.skills.core, ...info.skills.ui]],
+  ["Архитектура", info.skills.architecture],
+  ["Backend", info.skills.backend],
+  ["Тестирование и инструменты", [...info.skills.testing, ...info.skills.tooling]],
+  ["Интеграции", info.skills.integrations],
 ];
 
 export const sectionTitles = {
@@ -48,6 +65,10 @@ export const resumeSections = {
   keyTechnologies: {
     title: sectionTitles.keyTechnologies,
     skills: primarySkills,
+  },
+  compactSkills: {
+    title: sectionTitles.skills,
+    groups: compactSkillGroups,
   },
   experience: {
     title: sectionTitles.experience,

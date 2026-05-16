@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ResumeDocument from "../components/ResumeDocument.astro";
-import { frontmatter as info } from "../data/info.md";
+import { documentTitle, info } from "../components/resumeData";
 import { resumeStyles } from "../data/resumeStyles";
 
 const selectedStyle = resumeStyles.find((style) => style.id === import.meta.env.RESUME_STYLE);
@@ -16,7 +16,7 @@ const accentClasses = {
 ---
 
 <Layout
-  title={selectedStyle ? `${info.name} - ${selectedStyle.name}` : `${info.name} - варианты резюме`}
+  title={selectedStyle ? documentTitle : `${documentTitle} - варианты резюме`}
   description={info.description}
 >
   {selectedStyle ? (

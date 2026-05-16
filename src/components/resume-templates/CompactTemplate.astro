@@ -55,6 +55,22 @@ const { about } = getSplitAboutSections(4);
     </div>
   </section>
 
+  <section class="border-b border-zinc-200 py-5">
+    <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
+      {resumeSections.compactSkills.title}
+    </h2>
+    <div class="mt-3 grid gap-x-8 gap-y-3 md:grid-cols-2">
+      {
+        resumeSections.compactSkills.groups.map(([title, skills]) => (
+          <div class="text-sm leading-6">
+            <span class="font-bold text-zinc-950">{title}:</span>{" "}
+            <span class="text-zinc-700">{skills.join(", ")}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
   <div class="grid gap-8 py-6 lg:grid-cols-[1fr_2fr]">
     <section>
       <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-zinc-500">
