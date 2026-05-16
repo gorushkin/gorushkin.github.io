@@ -44,6 +44,7 @@ export const sectionTitles = {
   skills: "Навыки",
   technologies: "Технологии",
   keyTechnologies: "Ключевые технологии",
+  education: "Образование",
   experience: "Опыт работы",
   shortExperience: "Опыт",
   focus: "Фокус",
@@ -69,6 +70,11 @@ export const resumeSections = {
   compactSkills: {
     title: sectionTitles.skills,
     groups: compactSkillGroups,
+  },
+  education: {
+    title: sectionTitles.education,
+    items: info.education,
+    courses: info.courses,
   },
   experience: {
     title: sectionTitles.experience,

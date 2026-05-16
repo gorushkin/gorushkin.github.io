@@ -1,4 +1,5 @@
 ---
+import EmailLink from "../EmailLink.astro";
 import { getSplitAboutSections, info, resumeSections } from "../resumeData";
 
 const { about, focus } = getSplitAboutSections(3);
@@ -24,12 +25,7 @@ const { about, focus } = getSplitAboutSections(3);
         class="text-sm not-italic leading-relaxed text-zinc-700 sm:text-right print:text-[9pt] print:leading-snug"
       >
         <span class="block">{info.location} • {info.workFormat}</span>
-        <a
-          class="block whitespace-nowrap underline-offset-4 hover:underline"
-          href={`mailto:${info.contacts.email}`}
-        >
-          {info.contacts.email}
-        </a>
+        <EmailLink class="block whitespace-nowrap underline-offset-4 hover:underline" />
         <a
           class="block whitespace-nowrap underline-offset-4 hover:underline"
           href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}
@@ -60,6 +56,37 @@ const { about, focus } = getSplitAboutSections(3);
           class="space-y-3 text-sm leading-6 text-zinc-800 sm:col-start-2 print:space-y-2 print:text-[10pt] print:leading-snug"
         >
           {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section
+        class="col-span-2 grid grid-cols-1 gap-x-4 gap-y-3 border-t-2 border-indigo-900 px-2 pt-3 leading-relaxed sm:[grid-template-columns:subgrid] print:px-0 print:pt-2 print:leading-snug"
+      >
+        <h2
+          class="text-center text-lg font-light uppercase leading-none text-zinc-800 sm:text-left print:text-[11pt]"
+        >
+          {resumeSections.education.title}
+        </h2>
+        <div
+          class="space-y-3 text-sm leading-6 text-zinc-800 sm:col-start-2 print:space-y-2 print:text-[10pt] print:leading-snug"
+        >
+          {resumeSections.education.items.map((item) => (
+            <section>
+              <p class="font-bold">{item.institution}</p>
+              <p>{item.degree}</p>
+              <p class="text-zinc-700">{item.period}</p>
+            </section>
+          ))}
+          <section>
+            <p class="font-bold">Курсы</p>
+            <ul class="mt-1 list-disc space-y-1 pl-5 print:space-y-0.5 print:pl-4">
+              {resumeSections.education.courses.map((course) => (
+                <li class="pl-1">
+                  {course.title}, {course.provider}, {course.period}
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </section>
 

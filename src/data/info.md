@@ -6,12 +6,14 @@ description: >-
   Frontend-инженер с 7+ годами опыта. Работаю с TypeScript и React,
   делаю сложные интерфейсы с данными: таблицы, формы, синхронизацию состояний
   и обновления в реальном времени.
-location: Воронеж
+location: Remote
 workFormat: удаленно
 
 contacts:
   telegram: "@artyomgorushkin"
-  email: job@gorushkin.com
+  emailLabel: Email me
+  emailUser: gorushkin.jobs
+  emailDomain: gmail.com
   github: https://github.com/gorushkin
 
 about:
@@ -82,6 +84,22 @@ skills:
     - JWT Authentication
     - Google Analytics
     - WebSocket
+
+education:
+  - institution: Российский государственный гуманитарный университет (РГГУ)
+    degree: Государственное и муниципальное управление
+    period: 2017
+
+courses:
+  - title: Фронтенд-разработчик
+    provider: Хекслет
+    period: 2019
+  - title: Node.js-разработчик
+    provider: Хекслет
+    period: 2019
+  - title: Фронтенд-разработчик
+    provider: HTML-Academy
+    period: 2018
 
 experience:
   - company: КОРУС Консалтинг

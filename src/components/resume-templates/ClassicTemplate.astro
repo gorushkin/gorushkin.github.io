@@ -1,4 +1,5 @@
 ---
+import EmailLink from "../EmailLink.astro";
 import { info, resumeSections } from "../resumeData";
 ---
 
@@ -20,9 +21,7 @@ import { info, resumeSections } from "../resumeData";
 
         <address class="not-italic text-sm leading-7 text-zinc-200 print:text-zinc-700">
           <div>{info.location} • {info.workFormat}</div>
-          <a class="block underline-offset-4 hover:underline" href={`mailto:${info.contacts.email}`}>
-            {info.contacts.email}
-          </a>
+          <EmailLink class="block underline-offset-4 hover:underline" />
           <a class="block underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>
             Telegram: {info.contacts.telegram}
           </a>
@@ -52,6 +51,33 @@ import { info, resumeSections } from "../resumeData";
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 class="border-b border-zinc-300 pb-2 text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">
+            {resumeSections.education.title}
+          </h2>
+          <div class="mt-5 space-y-5 text-sm leading-6 text-zinc-700">
+            {resumeSections.education.items.map((item) => (
+              <div>
+                <h3 class="font-semibold text-zinc-950">{item.institution}</h3>
+                <p>{item.degree}</p>
+                <p class="text-zinc-500">{item.period}</p>
+              </div>
+            ))}
+            <div>
+              <h3 class="font-semibold text-zinc-950">Курсы</h3>
+              <div class="mt-2 space-y-2">
+                {resumeSections.education.courses.map((course) => (
+                  <p>
+                    <span class="font-medium text-zinc-900">{course.title}</span>
+                    <br />
+                    {course.provider}, {course.period}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </aside>

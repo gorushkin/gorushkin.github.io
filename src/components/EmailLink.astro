@@ -1,0 +1,17 @@
+---
+import { frontmatter as info } from "../data/info.md";
+
+interface Props {
+  class?: string;
+}
+
+const className = Astro.props.class;
+const email = `${info.contacts.emailUser}@${info.contacts.emailDomain}`;
+---
+
+<a
+  class={className}
+  href={`mailto:${email}`}
+>
+  {info.contacts.emailLabel}
+</a>

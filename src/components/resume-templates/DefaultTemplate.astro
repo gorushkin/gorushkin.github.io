@@ -1,4 +1,5 @@
 ---
+import EmailLink from "../EmailLink.astro";
 import { getSplitAboutSections, info, resumeSections } from "../resumeData";
 
 const { about, focus } = getSplitAboutSections(4);
@@ -19,10 +20,7 @@ const { about, focus } = getSplitAboutSections(4);
       </div>
       <address class="not-italic text-sm leading-6 text-gray-600 sm:text-right">
         <div>{info.location} • {info.workFormat}</div>
-        <a
-          class="block underline-offset-4 hover:underline"
-          href={`mailto:${info.contacts.email}`}>{info.contacts.email}</a
-        >
+        <EmailLink class="block underline-offset-4 hover:underline" />
         <a
           class="block underline-offset-4 hover:underline"
           href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}
@@ -86,6 +84,33 @@ const { about, focus } = getSplitAboutSections(4);
             </section>
           ))
         }
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="mb-4 border-b border-gray-300 pb-2 text-2xl font-semibold">
+        {resumeSections.education.title}
+      </h2>
+      <div class="space-y-4 text-sm leading-6 text-gray-700">
+        {resumeSections.education.items.map((item) => (
+          <section>
+            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <p class="font-bold text-black">{item.institution}</p>
+              <p class="text-gray-600">{item.period}</p>
+            </div>
+            <p>{item.degree}</p>
+          </section>
+        ))}
+        <section>
+          <p class="font-bold text-black">Курсы</p>
+          <ul class="mt-1 list-disc space-y-1 pl-5">
+            {resumeSections.education.courses.map((course) => (
+              <li>
+                {course.title}, {course.provider}, {course.period}
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </section>
 
