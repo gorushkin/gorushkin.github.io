@@ -4,11 +4,20 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  ogTitle?: string;
 }
+
+const siteUrl = "https://artyom.gorushkin.com/";
+const seoDescription =
+  "Senior Frontend Engineer with 7+ years of experience building complex data-heavy web applications with React, TypeScript, frontend architecture, and platform solutions.";
+const ogDescription =
+  "Frontend engineer with 7+ years of experience in React, TypeScript, architecture, and complex enterprise systems.";
+const ogImage = `${siteUrl}og-image.png`;
 
 const {
   title = "Gorushkin Artyom",
-  description = "Senior Frontend Developer CV",
+  ogTitle = title,
+  description = seoDescription,
 } = Astro.props;
 ---
 
@@ -19,6 +28,13 @@ const {
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={siteUrl} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body class="bg-zinc-100 text-zinc-950 antialiased print:bg-white">
