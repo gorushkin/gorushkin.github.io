@@ -1,4 +1,5 @@
 ---
+import { frontmatter as info } from "../data/info.md";
 import "../styles/global.css";
 
 interface Props {
@@ -13,6 +14,16 @@ const seoDescription =
 const ogDescription =
   "Frontend engineer with 7+ years of experience in React, TypeScript, architecture, and complex enterprise systems.";
 const ogImage = `${siteUrl}og-image.png`;
+const telegramUrl = `https://t.me/${info.contacts.telegram.replace("@", "")}`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: info.titleName,
+  jobTitle: info.title,
+  url: siteUrl.replace(/\/$/, ""),
+  sameAs: [info.contacts.github, telegramUrl],
+  email: info.contacts.email,
+};
 
 const {
   title = "Gorushkin Artyom",
@@ -35,6 +46,7 @@ const {
     <meta property="og:url" content={siteUrl} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <title>{title}</title>
   </head>
   <body class="bg-zinc-100 text-zinc-950 antialiased print:bg-white">
