@@ -1,17 +1,22 @@
 ---
-import { frontmatter as info } from "../data/info.md";
+import { info } from "./resumeData";
 
 interface Props {
   class?: string;
+  "aria-label"?: string;
+  title?: string;
 }
 
 const className = Astro.props.class;
 const email = `${info.contacts.emailUser}@${info.contacts.emailDomain}`;
+const hasDefaultSlot = Astro.slots.has("default");
 ---
 
 <a
   class={className}
   href={`mailto:${email}`}
+  aria-label={Astro.props["aria-label"]}
+  title={Astro.props.title}
 >
-  {info.contacts.emailLabel}
+  {hasDefaultSlot ? <slot /> : info.contacts.emailLabel}
 </a>

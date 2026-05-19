@@ -34,6 +34,13 @@ export const resumeStyles = [
     href: "/resume/engen/",
     accent: "indigo",
   },
+  {
+    id: "minimal-mono",
+    name: "Minimal Mono",
+    description: "Компактный shadcn-подобный лист: узкая колонка, моноширинный текст, бейджи и аккуратная печать.",
+    href: "/resume/minimal-mono/",
+    accent: "zinc",
+  },
 ] as const;
 
 export type ResumeStyleId = (typeof resumeStyles)[number]["id"];
