@@ -26,8 +26,6 @@ const initials = info.titleName
 
 const telegramUrl = `https://t.me/${info.contacts.telegram.replace("@", "")}`;
 
-const githubLabel = info.contacts.github.replace("https://", "");
-
 const iconLinks = [
   {
     label: "Telegram",
@@ -122,11 +120,11 @@ const iconLinks = [
           <EmailLink class="underline underline-offset-2" />
           <span aria-hidden="true">|</span>
           <a class="underline underline-offset-2" href={telegramUrl}
-            >{info.contacts.telegram}</a
+            >telegram</a
           >
           <span aria-hidden="true">|</span>
           <a class="underline underline-offset-2" href={info.contacts.github}
-            >{githubLabel}</a
+            >github</a
           >
         </div>
       </div>

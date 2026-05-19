@@ -17,8 +17,8 @@ import { info, resumeSections } from "../resumeData";
         <address class="grid gap-1 not-italic text-sm font-medium text-zinc-700">
           <span>{info.location} • {info.workFormat}</span>
           <EmailLink class="text-rose-800 underline-offset-4 hover:underline" />
-          <a class="text-rose-800 underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>Telegram: {info.contacts.telegram}</a>
-          <a class="text-rose-800 underline-offset-4 hover:underline" href={info.contacts.github}>GitHub: {info.contacts.github.replace("https://", "")}</a>
+          <a class="text-rose-800 underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>telegram</a>
+          <a class="text-rose-800 underline-offset-4 hover:underline" href={info.contacts.github}>github</a>
         </address>
       </div>
     </header>

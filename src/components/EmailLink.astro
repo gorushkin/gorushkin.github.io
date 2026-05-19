@@ -18,5 +18,5 @@ const hasDefaultSlot = Astro.slots.has("default");
   aria-label={Astro.props["aria-label"]}
   title={Astro.props.title}
 >
-  {hasDefaultSlot ? <slot /> : info.contacts.emailLabel}
+  {hasDefaultSlot ? <slot /> : "email"}
 </a>

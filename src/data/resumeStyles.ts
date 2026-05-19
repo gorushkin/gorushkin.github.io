@@ -41,6 +41,13 @@ export const resumeStyles = [
     href: "/resume/minimal-mono/",
     accent: "zinc",
   },
+  {
+    id: "minimal-sheet",
+    name: "Минималистичный лист",
+    description: "Чистый одноколоночный лист: монограмма, спокойный фон и плотная типографика.",
+    href: "/resume/minimal-sheet/",
+    accent: "indigo",
+  },
 ] as const;
 
 export type ResumeStyleId = (typeof resumeStyles)[number]["id"];
