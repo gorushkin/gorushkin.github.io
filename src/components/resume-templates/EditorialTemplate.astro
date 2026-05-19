@@ -1,5 +1,5 @@
 ---
-import EmailLink from "../EmailLink.astro";
+import ContactLink from "../ContactLink.astro";
 import { info, resumeSections } from "../resumeData";
 ---
 
@@ -16,9 +16,9 @@ import { info, resumeSections } from "../resumeData";
         <p class="text-xl leading-8 text-zinc-700">{info.description}</p>
         <address class="grid gap-1 not-italic text-sm font-medium text-zinc-700">
           <span>{info.location} • {info.workFormat}</span>
-          <EmailLink class="text-rose-800 underline-offset-4 hover:underline" />
-          <a class="text-rose-800 underline-offset-4 hover:underline" href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}>telegram</a>
-          <a class="text-rose-800 underline-offset-4 hover:underline" href={info.contacts.github}>github</a>
+          <ContactLink type="email" class="text-rose-800 underline-offset-4 hover:underline" />
+          <ContactLink type="telegram" class="text-rose-800 underline-offset-4 hover:underline" />
+          <ContactLink type="github" class="text-rose-800 underline-offset-4 hover:underline" />
         </address>
       </div>
     </header>

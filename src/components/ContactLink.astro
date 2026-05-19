@@ -1,0 +1,31 @@
+---
+import { info } from "./resumeData";
+
+type ContactType = "email" | "telegram" | "github";
+
+interface Props {
+  type: ContactType;
+  class?: string;
+  label?: string;
+  "aria-label"?: string;
+  title?: string;
+}
+
+const contactLinks: Record<ContactType, string> = {
+  email: `mailto:${info.contacts.emailUser}@${info.contacts.emailDomain}`,
+  telegram: `https://t.me/${info.contacts.telegram.replace("@", "")}`,
+  github: info.contacts.github,
+};
+
+const { type, label } = Astro.props;
+const hasDefaultSlot = Astro.slots.has("default");
+---
+
+<a
+  class={Astro.props.class}
+  href={contactLinks[type]}
+  aria-label={Astro.props["aria-label"]}
+  title={Astro.props.title}
+>
+  {hasDefaultSlot ? <slot /> : label ?? type}
+</a>

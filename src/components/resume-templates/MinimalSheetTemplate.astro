@@ -1,5 +1,5 @@
 ---
-import EmailLink from "../EmailLink.astro";
+import ContactLink from "../ContactLink.astro";
 import { info, resumeSections } from "../resumeData";
 
 const initials = info.titleName
@@ -9,7 +9,6 @@ const initials = info.titleName
   .slice(0, 2)
   .toUpperCase();
 
-const telegramUrl = `https://t.me/${info.contacts.telegram.replace("@", "")}`;
 ---
 
 <main
@@ -39,19 +38,20 @@ const telegramUrl = `https://t.me/${info.contacts.telegram.replace("@", "")}`;
       >
         <span>{info.location}, {info.workFormat}</span>
         <span aria-hidden="true">|</span>
-        <EmailLink
+        <ContactLink
+          type="email"
           class="font-bold text-slate-950 transition hover:text-slate-400"
         />
         <span aria-hidden="true">|</span>
-        <a
+        <ContactLink
+          type="telegram"
           class="font-bold text-slate-950 transition hover:text-slate-400"
-          href={telegramUrl}>telegram</a
-        >
+        />
         <span aria-hidden="true">|</span>
-        <a
+        <ContactLink
+          type="github"
           class="font-bold text-slate-950 transition hover:text-slate-400"
-          href={info.contacts.github}>github</a
-        >
+        />
       </address>
       <div class="mt-5 space-y-2 text-sm leading-6">
         {
