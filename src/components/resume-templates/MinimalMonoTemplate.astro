@@ -1,0 +1,264 @@
+---
+import EmailLink from "../EmailLink.astro";
+import {
+  getSplitAboutSections,
+  info,
+  primarySkills,
+  resumeSections,
+  skillGroups,
+} from "../resumeData";
+
+const { about, focus } = getSplitAboutSections(3);
+
+const allSkills = [
+  ...new Set([
+    ...primarySkills,
+    ...skillGroups.flatMap(([, skills]) => skills),
+  ]),
+];
+
+const initials = info.titleName
+  .split(" ")
+  .map((part) => part[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
+const telegramUrl = `https://t.me/${info.contacts.telegram.replace("@", "")}`;
+
+const githubLabel = info.contacts.github.replace("https://", "");
+
+const iconLinks = [
+  {
+    label: "Telegram",
+    href: telegramUrl,
+    path: "M21.5 4.5 3 11.8l7 2.2 2.4 7 9.1-16.5z M10 14l4.8-4.5",
+  },
+  {
+    label: "GitHub",
+    href: info.contacts.github,
+    path: "M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4 M9 18c-4.51 2-5-2-7-2",
+  },
+];
+---
+
+<main
+  class="min-h-screen overflow-auto bg-zinc-50 px-4 py-8 text-zinc-950 sm:px-8 print:min-h-0 print:bg-white print:p-0 print:text-[10pt]"
+>
+  <article
+    class="mx-auto w-full max-w-2xl space-y-8 bg-zinc-50 print:max-w-none print:space-y-4 print:bg-white"
+  >
+    <header class="flex items-start justify-between gap-5">
+      <div class="min-w-0 flex-1 space-y-1.5">
+        <h1
+          class="text-2xl font-bold leading-tight text-zinc-950 print:text-xl"
+        >
+          {info.titleName}
+        </h1>
+        <p
+          class="max-w-md text-pretty font-mono text-sm leading-6 text-zinc-700 print:text-[12px] print:leading-snug"
+        >
+          {info.description}
+        </p>
+        <p class="max-w-md font-mono text-xs leading-5 text-zinc-950">
+          {info.location}, {info.workFormat}
+        </p>
+
+        <div
+          class="flex list-none gap-x-1 pt-1 font-mono text-sm text-zinc-700 print:hidden"
+          aria-label="Контакты"
+        >
+          <EmailLink
+            class="inline-flex size-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-800 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+            aria-label="Email"
+            title="Email"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-4"
+              aria-hidden="true"
+            >
+              <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            </svg>
+          </EmailLink>
+          {
+            iconLinks.map((contact) => (
+              <a
+                class="inline-flex size-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-800 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+                href={contact.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={contact.label}
+                title={contact.label}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="size-4"
+                  aria-hidden="true"
+                >
+                  <path d={contact.path} />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+
+        <div
+          class="hidden flex-wrap gap-x-2 gap-y-1 font-mono text-[12px] text-zinc-700 print:flex"
+        >
+          <EmailLink class="underline underline-offset-2" />
+          <span aria-hidden="true">|</span>
+          <a class="underline underline-offset-2" href={telegramUrl}
+            >{info.contacts.telegram}</a
+          >
+          <span aria-hidden="true">|</span>
+          <a class="underline underline-offset-2" href={info.contacts.github}
+            >{githubLabel}</a
+          >
+        </div>
+      </div>
+
+      <div
+        class="flex size-28 shrink-0 items-center justify-center rounded-xl bg-zinc-950 font-mono text-3xl font-bold text-white print:size-20 print:text-2xl"
+        aria-hidden="true"
+      >
+        {initials}
+      </div>
+    </header>
+
+    <div class="space-y-8 print:space-y-4">
+      <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+        <h2 class="text-xl font-bold leading-tight print:text-base">
+          {about.title}
+        </h2>
+        <div
+          class="space-y-3 text-pretty font-mono text-sm leading-6 text-zinc-700 print:space-y-2 print:text-[12px] print:leading-snug"
+        >
+          {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
+
+      <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+        <h2 class="text-xl font-bold leading-tight print:text-base">
+          {resumeSections.experience.title}
+        </h2>
+        <div class="space-y-5 print:space-y-3">
+          {
+            resumeSections.experience.jobs.map((job) => (
+              <article class="break-inside-avoid py-1 print:py-0">
+                <div class="flex flex-col gap-y-1.5 print:gap-y-1">
+                  <div class="flex items-start justify-between gap-x-3 text-base">
+                    <h3 class="font-semibold leading-tight print:text-sm">
+                      {job.company}
+                    </h3>
+                    <div class="shrink-0 text-right text-sm tabular-nums text-zinc-500 print:text-[11px]">
+                      {job.period}
+                    </div>
+                  </div>
+                  <h4 class="font-mono text-sm font-semibold leading-tight print:text-[12px]">
+                    {job.position}
+                  </h4>
+                </div>
+
+                <div class="mt-2 text-pretty font-mono text-sm leading-6 text-zinc-700 print:mt-1 print:text-[12px] print:leading-snug">
+                  <p>{job.summary}</p>
+                  <ul class="mt-1 list-inside list-disc space-y-1 print:space-y-0">
+                    {job.details.slice(0, 5).map((detail) => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+        <h2 class="text-xl font-bold leading-tight print:text-base">
+          {resumeSections.skills.title}
+        </h2>
+        <ul
+          class="flex list-none flex-wrap gap-1 p-0"
+          aria-label="Список навыков"
+        >
+          {
+            allSkills.map((skill) => (
+              <li>
+                <span class="inline-flex items-center rounded-md bg-zinc-950 px-2 py-0.5 align-middle font-mono text-xs font-semibold leading-5 text-white transition-colors hover:bg-zinc-700 print:px-1 print:py-0.5 print:text-[10px] print:leading-tight">
+                  {skill}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+        <h2 class="text-xl font-bold leading-tight print:text-base">
+          {resumeSections.education.title}
+        </h2>
+        <div
+          class="space-y-4 font-mono text-sm leading-6 text-zinc-700 print:space-y-2 print:text-[12px] print:leading-snug"
+        >
+          {
+            resumeSections.education.items.map((item) => (
+              <article class="break-inside-avoid">
+                <div class="flex items-start justify-between gap-x-3">
+                  <h3 class="font-sans text-base font-semibold leading-tight text-zinc-950 print:text-sm">
+                    {item.institution}
+                  </h3>
+                  <p class="shrink-0 text-right tabular-nums text-zinc-500 print:text-[11px]">
+                    {item.period}
+                  </p>
+                </div>
+                <p class="mt-1">{item.degree}</p>
+              </article>
+            ))
+          }
+
+          <article class="break-inside-avoid">
+            <h3
+              class="font-sans text-base font-semibold leading-tight text-zinc-950 print:text-sm"
+            >
+              Курсы
+            </h3>
+            <ul class="mt-1 space-y-1 print:space-y-0">
+              {
+                resumeSections.education.courses.map((course) => (
+                  <li>
+                    {course.title}, {course.provider}, {course.period}
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
+        <h2 class="text-xl font-bold leading-tight print:text-base">
+          {focus.title}
+        </h2>
+        <ul
+          class="list-inside list-disc space-y-1 text-pretty font-mono text-sm leading-6 text-zinc-700 print:text-[12px] print:leading-snug"
+        >
+          {focus.paragraphs.map((paragraph) => <li>{paragraph}</li>)}
+        </ul>
+      </section>
+    </div>
+  </article>
+</main>
