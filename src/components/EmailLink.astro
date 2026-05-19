@@ -1,5 +1,5 @@
 ---
-import { info } from "./resumeData";
+import ContactLink from "./ContactLink.astro";
 
 interface Props {
   class?: string;
@@ -7,16 +7,25 @@ interface Props {
   title?: string;
 }
 
-const className = Astro.props.class;
-const email = `${info.contacts.emailUser}@${info.contacts.emailDomain}`;
 const hasDefaultSlot = Astro.slots.has("default");
 ---
 
-<a
-  class={className}
-  href={`mailto:${email}`}
-  aria-label={Astro.props["aria-label"]}
-  title={Astro.props.title}
->
-  {hasDefaultSlot ? <slot /> : info.contacts.emailLabel}
-</a>
+{
+  hasDefaultSlot ? (
+    <ContactLink
+      type="email"
+      class={Astro.props.class}
+      aria-label={Astro.props["aria-label"]}
+      title={Astro.props.title}
+    >
+      <slot />
+    </ContactLink>
+  ) : (
+    <ContactLink
+      type="email"
+      class={Astro.props.class}
+      aria-label={Astro.props["aria-label"]}
+      title={Astro.props.title}
+    />
+  )
+}

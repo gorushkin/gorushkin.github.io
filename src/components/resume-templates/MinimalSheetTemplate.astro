@@ -1,0 +1,146 @@
+---
+import ContactLink from "../ContactLink.astro";
+import { info, resumeSections } from "../resumeData";
+
+const initials = info.titleName
+  .split(" ")
+  .map((part) => part[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
+---
+
+<main
+  class="min-h-screen bg-indigo-50 px-4 py-8 text-slate-700 sm:py-14 print:min-h-0 print:bg-white print:p-0"
+>
+  <article
+    class="relative mx-auto max-w-4xl bg-white px-8 pb-8 pt-20 shadow-sm sm:px-24 sm:py-14 print:max-w-none print:p-0 print:shadow-none"
+  >
+    <div
+      class="absolute left-4 top-4 flex select-none flex-col items-center rounded-sm bg-indigo-400 px-4 py-1 text-sm font-bold leading-5 text-slate-950 sm:left-8 sm:top-12 print:hidden"
+      aria-hidden="true"
+    >
+      {initials.split("").map((letter) => <span>{letter}</span>)}
+    </div>
+
+    <header>
+      <h1
+        class="text-3xl font-extrabold uppercase leading-tight text-slate-950"
+      >
+        {info.name}
+      </h1>
+      <p class="mt-5 text-sm font-semibold leading-6 text-slate-950">
+        {info.title}
+      </p>
+      <address
+        class="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-sm not-italic leading-6"
+      >
+        <span>{info.location}, {info.workFormat}</span>
+        <span aria-hidden="true">|</span>
+        <ContactLink
+          type="email"
+          class="font-bold text-slate-950 transition hover:text-slate-400"
+        />
+        <span aria-hidden="true">|</span>
+        <ContactLink
+          type="telegram"
+          class="font-bold text-slate-950 transition hover:text-slate-400"
+        />
+        <span aria-hidden="true">|</span>
+        <ContactLink
+          type="github"
+          class="font-bold text-slate-950 transition hover:text-slate-400"
+        />
+      </address>
+      <div class="mt-5 space-y-2 text-sm leading-6">
+        {
+          resumeSections.about.paragraphs
+            .slice(0, 2)
+            .map((paragraph) => <p>{paragraph}</p>)
+        }
+      </div>
+    </header>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-bold uppercase leading-5 text-slate-500">
+        {resumeSections.experience.title}
+      </h2>
+      <div class="mt-3 space-y-8">
+        {
+          resumeSections.experience.jobs.map((job) => (
+            <article class="break-inside-avoid">
+              <h3 class="text-xl font-semibold uppercase leading-7 text-slate-950">
+                {job.company}
+              </h3>
+              <h4 class="mt-3 text-sm font-semibold leading-5 text-slate-600">
+                {job.position} | {job.period}
+              </h4>
+              <p class="mt-3 text-sm leading-6">{job.summary}</p>
+              <ul class="mt-3 list-disc space-y-2 pl-6 text-sm leading-5 marker:text-slate-300">
+                {job.details.slice(0, 5).map((detail) => (
+                  <li>{detail}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-bold uppercase leading-5 text-slate-500">
+        {resumeSections.technologies.title}
+      </h2>
+      <div class="mt-3 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+        {
+          resumeSections.technologies.groups.map(([title, skills]) => (
+            <section class="break-inside-avoid">
+              <h3 class="text-xl font-semibold uppercase leading-7 text-slate-950">
+                {title}
+              </h3>
+              <p class="mt-2 text-sm leading-6">{skills.join(", ")}</p>
+            </section>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-bold uppercase leading-5 text-slate-500">
+        {resumeSections.education.title}
+      </h2>
+      <div class="mt-3 space-y-5">
+        {
+          resumeSections.education.items.map((item) => (
+            <article class="break-inside-avoid">
+              <h3 class="text-xl font-semibold uppercase leading-7 text-slate-950">
+                {item.institution}
+              </h3>
+              <h4 class="mt-3 text-sm font-semibold leading-5 text-slate-600">
+                {item.degree} | {item.period}
+              </h4>
+            </article>
+          ))
+        }
+
+        <article class="break-inside-avoid">
+          <h3 class="text-xl font-semibold uppercase leading-7 text-slate-950">
+            Курсы
+          </h3>
+          <ul
+            class="mt-3 list-disc space-y-2 pl-6 text-sm leading-5 marker:text-slate-300"
+          >
+            {
+              resumeSections.education.courses.map((course) => (
+                <li>
+                  {course.title}, {course.provider}, {course.period}
+                </li>
+              ))
+            }
+          </ul>
+        </article>
+      </div>
+    </section>
+  </article>
+</main>

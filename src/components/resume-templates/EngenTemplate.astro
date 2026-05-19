@@ -1,5 +1,5 @@
 ---
-import EmailLink from "../EmailLink.astro";
+import ContactLink from "../ContactLink.astro";
 import { getSplitAboutSections, info, resumeSections } from "../resumeData";
 
 const { about, focus } = getSplitAboutSections(3);
@@ -25,19 +25,9 @@ const { about, focus } = getSplitAboutSections(3);
         class="text-sm not-italic leading-relaxed text-zinc-700 sm:text-right print:text-[9pt] print:leading-snug"
       >
         <span class="block">{info.location} • {info.workFormat}</span>
-        <EmailLink class="block whitespace-nowrap underline-offset-4 hover:underline" />
-        <a
-          class="block whitespace-nowrap underline-offset-4 hover:underline"
-          href={`https://t.me/${info.contacts.telegram.replace("@", "")}`}
-        >
-          {info.contacts.telegram}
-        </a>
-        <a
-          class="block whitespace-nowrap underline-offset-4 hover:underline"
-          href={info.contacts.github}
-        >
-          {info.contacts.github.replace("https://", "")}
-        </a>
+        <ContactLink type="email" class="block whitespace-nowrap underline-offset-4 hover:underline" />
+        <ContactLink type="telegram" class="block whitespace-nowrap underline-offset-4 hover:underline" />
+        <ContactLink type="github" class="block whitespace-nowrap underline-offset-4 hover:underline" />
       </address>
     </header>
 

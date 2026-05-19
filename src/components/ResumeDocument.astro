@@ -5,6 +5,7 @@ import CompactTemplate from "./resume-templates/CompactTemplate.astro";
 import DefaultTemplate from "./resume-templates/DefaultTemplate.astro";
 import EditorialTemplate from "./resume-templates/EditorialTemplate.astro";
 import EngenTemplate from "./resume-templates/EngenTemplate.astro";
+import MinimalSheetTemplate from "./resume-templates/MinimalSheetTemplate.astro";
 import MinimalMonoTemplate from "./resume-templates/MinimalMonoTemplate.astro";
 
 const { style } = Astro.props;
@@ -16,6 +17,7 @@ const templates = {
   default: DefaultTemplate,
   engen: EngenTemplate,
   "minimal-mono": MinimalMonoTemplate,
+  "minimal-sheet": MinimalSheetTemplate,
 } satisfies Record<ResumeStyleId, unknown>;
 
 const Template = templates[style.id as ResumeStyleId];

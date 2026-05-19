@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import EmailLink from "../components/EmailLink.astro";
+import ContactLink from "../components/ContactLink.astro";
 import ResumeDocument from "../components/ResumeDocument.astro";
 import { documentTitle, info } from "../components/resumeData";
 import { resumeStyles } from "../data/resumeStyles";
@@ -74,10 +74,17 @@ const accentClasses = {
 
       <article class="mt-10 border border-zinc-200 bg-white p-6">
         <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-zinc-500">Данные</h2>
-        <div class="mt-4 grid gap-4 text-sm leading-6 text-zinc-700 sm:grid-cols-3">
+        <div class="mt-4 grid gap-4 text-sm leading-6 text-zinc-700 sm:grid-cols-4">
           <p><span class="font-semibold text-zinc-950">Локация:</span> {info.location}, {info.workFormat}</p>
-          <p><span class="font-semibold text-zinc-950">Email:</span> <EmailLink class="underline-offset-4 hover:underline" /></p>
-          <p><span class="font-semibold text-zinc-950">Telegram:</span> {info.contacts.telegram}</p>
+          <p><span class="font-semibold text-zinc-950">Email:</span> <ContactLink type="email" class="underline-offset-4 hover:underline" /></p>
+          <p>
+            <span class="font-semibold text-zinc-950">Telegram:</span>
+            <ContactLink type="telegram" class="underline-offset-4 hover:underline" />
+          </p>
+          <p>
+            <span class="font-semibold text-zinc-950">GitHub:</span>
+            <ContactLink type="github" class="underline-offset-4 hover:underline" />
+          </p>
         </div>
       </article>
     </main>

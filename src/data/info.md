@@ -11,7 +11,7 @@ workFormat: удаленно
 
 contacts:
   telegram: "@artyomgorushkin"
-  emailLabel: Email me
+  emailLabel: email
   emailUser: gorushkin.jobs
   emailDomain: gmail.com
   github: https://github.com/gorushkin
